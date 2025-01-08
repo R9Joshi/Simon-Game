@@ -1,11 +1,10 @@
 // alert("hi");
+// alert("hi");
 var buttonColours = ["red","blue","green","yellow"];
 var gamePattern =[];
 var userClickedPattern =[];
 var gameStarted = false;
 var level = 0;
-
-
 
 // Next Sequence
 function nextSequence(){
@@ -29,13 +28,11 @@ $(".btn").click(function() {
     checkAnswer(userClickedPattern.length-1);
 });
 
-
 // Sound
 function playSound(name){
     var audio = new Audio("./sounds/"+name+".mp3");
     audio.play();
 };
-
 
 // Animation
 function animatePress(currentColour){
@@ -53,7 +50,6 @@ $(document).on("keydown",function(){
         gameStarted = true; 
     };
 });
-
 
 // Check Answer
 function checkAnswer(currentLevel){
@@ -75,6 +71,7 @@ function checkAnswer(currentLevel){
         setTimeout(function() {
             $("body").removeClass("game-over");
         }, 200);
+        startOver(); // Call startOver when game is over
     }
     console.log("userClickedPattern: ", userClickedPattern);
     console.log("gamePattern: ", gamePattern);
