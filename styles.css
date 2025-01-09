@@ -1,6 +1,17 @@
 body {
   text-align: center;
   background-color: #011F3F;
+  position: relative; /* Ensure body is positioned relative */
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+#particles-js {
+  position: fixed; /* Ensure particles cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Corrected width unit */
+  height: 100vh; /* Corrected height unit */
+  z-index: 0; /* Ensure particles are behind other elements */
 }
 
 #level-title {
@@ -8,13 +19,17 @@ body {
   font-size: 3rem;
   margin:  5%;
   color: #FEF2BF;
+  z-index: 1; /* Ensure title is above particles */
+  position: relative;
 }
 
 .container {
   display: block;
   width: 50%;
   margin: auto;
-
+  opacity: 0.9; /* Increase opacity */
+  z-index: 1; /* Ensure container is above particles */
+  position: relative;
 }
 
 .btn {
@@ -23,7 +38,13 @@ body {
   height: 200px;
   width: 200px;
   border: 10px solid black;
+  cursor: pointer;
   border-radius: 20%;
+  transition: transform 0.2s, background 0.2s; /* Add transition for hover effect */
+}
+
+.btn:hover {
+  transform: scale(1.1); /* Scale up on hover */
 }
 
 .game-over {
@@ -32,22 +53,45 @@ body {
 }
 
 .red {
-  background-color: red;
+  background: linear-gradient(45deg, #ff0000, #ff7f7f); /* Gradient effect */
 }
 
 .green {
-  background-color: green;
+  background: linear-gradient(45deg, #00ff00, #7fff7f); /* Gradient effect */
 }
 
 .blue {
-  background-color: blue;
+  background: linear-gradient(45deg, #0000ff, #7f7fff); /* Gradient effect */
 }
 
 .yellow {
-  background-color: yellow;
+  background: linear-gradient(45deg, #ffff00, #ffff7f); /* Gradient effect */
 }
 
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .btn {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    height: 100px;
+    width: 100px;
+  }
+
+  #level-title {
+    font-size: 2rem;
+  }
+
+  .container {
+    width: 80%;
+  }
 }
